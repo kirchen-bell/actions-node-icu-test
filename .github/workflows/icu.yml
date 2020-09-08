@@ -1,0 +1,12 @@
+name: "node icu test"
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: node --version
+      - run: node index.js
