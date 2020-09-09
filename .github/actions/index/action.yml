@@ -1,6 +1,6 @@
 name: index
 description: index
 runs:
-  using: node12
+  using: node14
   main: index.js
   
