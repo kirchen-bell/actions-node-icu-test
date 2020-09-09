@@ -1,0 +1,25 @@
+name: "icu action test"
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [11, 12, 13, 14]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/index
+        name: organic
+      - name: organic btest402
+        uses: ./.github/actions/btest402
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --version
+      - uses: ./.github/actions/index
+        name: node ${{ matrix.node }}
+      - name: node ${{ matrix.node }} btest402
+        uses: ./.github/actions/btest402

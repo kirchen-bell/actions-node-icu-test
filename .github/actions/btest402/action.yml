@@ -1,0 +1,6 @@
+name: btest402
+description: btest402
+runs:
+  using: node12
+  main: btest402.js
+  
