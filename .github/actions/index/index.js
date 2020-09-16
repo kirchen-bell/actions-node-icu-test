@@ -1,3 +1,7 @@
+console.log(process.versions.node)
+console.log((new Date()).toLocaleString('en-US', { month: 'long', weekday: 'long' }))
+console.log((new Date()).toLocaleString('ja-JP', { month: 'long', weekday: 'long' }))
+
 console.log(nowstr('en-US'))
 console.log(nowstr('ja-JP'))
 console.log('hasicu:', typeof Intl === 'object')
