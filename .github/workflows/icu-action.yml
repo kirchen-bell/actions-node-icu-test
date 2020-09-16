@@ -5,21 +5,23 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: [11, 12, 13, 14]
+        os: [windows-latest, ubuntu-latest, ubuntu-20.04, macos-latest]
+        node: [11, 12, 12.0.0, 13, 14]
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/actions/index
-        name: organic
-      - name: organic btest402
-        uses: ./.github/actions/btest402
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
       - run: node --version
-      - uses: ./.github/actions/index
-        name: node ${{ matrix.node }}
+      - name: node ${{ matrix.node }}
+        run: node ./.github/actions/index/index.js
       - name: node ${{ matrix.node }} btest402
+        run: node ./.github/actions/btest402/btest402.js
+
+      - name: organic
+        uses: ./.github/actions/index
+      - name: organic btest402
         uses: ./.github/actions/btest402
