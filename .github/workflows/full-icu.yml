@@ -21,17 +21,17 @@ jobs:
       - name: node ${{ matrix.node }}
         run: node ./.github/actions/index/index.js
         env:
-          NODE_ICU_DATA=node_modules/full-icu
+          NODE_ICU_DATA: node_modules/full-icu
       - name: node ${{ matrix.node }} btest402
         run: node ./.github/actions/btest402/btest402.js
         env:
-          NODE_ICU_DATA=node_modules/full-icu
+          NODE_ICU_DATA: node_modules/full-icu
 
       - name: organic
         uses: ./.github/actions/index
         env:
-          NODE_ICU_DATA=node_modules/full-icu
+          NODE_ICU_DATA: node_modules/full-icu
       - name: organic btest402
         uses: ./.github/actions/btest402
         env:
-          NODE_ICU_DATA=node_modules/full-icu
+          NODE_ICU_DATA: node_modules/full-icu
