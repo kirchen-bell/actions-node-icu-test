@@ -8,6 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     container: node:14
     strategy:
+      fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest, ubuntu-20.04, macos-latest]
         node: [11, 12, 12.0.0, 13, 14]
