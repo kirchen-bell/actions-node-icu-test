@@ -27,6 +27,9 @@ jobs:
         env:
           NODE_ICU_DATA: node_modules/full-icu
 
+      - run: echo $NODE_ICU_DATA
+        env:
+          NODE_ICU_DATA: ${{ github.workspace }}/node_modules/full-icu
       - name: organic
         uses: ./.github/actions/index
         env:
