@@ -1,4 +1,4 @@
-name: "icu action test"
+name: "full-icu"
 on:
   push:
   workflow_dispatch:
@@ -6,7 +6,6 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.os }}
-    container: node:14
     strategy:
       fail-fast: false
       matrix:
@@ -17,13 +16,22 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+      - run: npm i full-icu
       - run: node --version
       - name: node ${{ matrix.node }}
         run: node ./.github/actions/index/index.js
+        env:
+          NODE_ICU_DATA=node_modules/full-icu
       - name: node ${{ matrix.node }} btest402
         run: node ./.github/actions/btest402/btest402.js
+        env:
+          NODE_ICU_DATA=node_modules/full-icu
 
       - name: organic
         uses: ./.github/actions/index
+        env:
+          NODE_ICU_DATA=node_modules/full-icu
       - name: organic btest402
         uses: ./.github/actions/btest402
+        env:
+          NODE_ICU_DATA=node_modules/full-icu
