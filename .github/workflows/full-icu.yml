@@ -30,8 +30,8 @@ jobs:
       - name: organic
         uses: ./.github/actions/index
         env:
-          NODE_ICU_DATA: node_modules/full-icu
+          NODE_ICU_DATA: ./node_modules/full-icu
       - name: organic btest402
         uses: ./.github/actions/btest402
         env:
-          NODE_ICU_DATA: node_modules/full-icu
+          NODE_ICU_DATA: ./node_modules/full-icu
