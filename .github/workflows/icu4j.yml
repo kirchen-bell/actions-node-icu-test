@@ -11,3 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/icu4j
+      - uses: ./.github/actions/icu4j
+        env:
+          NODE_ICU_DATA: node_modules/icu4c-data
