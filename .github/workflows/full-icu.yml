@@ -20,12 +20,12 @@ jobs:
       - run: node --version
       - name: node ${{ matrix.node }}
         run: node ./.github/actions/index/index.js
-        env:
-          NODE_ICU_DATA: node_modules/full-icu
+        # env:
+        #   NODE_ICU_DATA: node_modules/icu4c-data
       - name: node ${{ matrix.node }} btest402
         run: node ./.github/actions/btest402/btest402.js
-        env:
-          NODE_ICU_DATA: node_modules/full-icu
+        # env:
+        #   NODE_ICU_DATA: node_modules/icu4c-data
 
       - run: echo $NODE_ICU_DATA
         env:
