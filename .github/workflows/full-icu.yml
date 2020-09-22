@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-      - run: npm i full-icu
+      - run: npm i icu4c-data@64l
       - run: node --version
       - name: node ${{ matrix.node }}
         run: node ./.github/actions/index/index.js
@@ -29,12 +29,20 @@ jobs:
 
       - run: echo $NODE_ICU_DATA
         env:
-          NODE_ICU_DATA: ${{ github.workspace }}/node_modules/full-icu
+          NODE_ICU_DATA: ${{ github.workspace }}/node_modules/icu4c-data
       - name: organic
         uses: ./.github/actions/index
         env:
-          NODE_ICU_DATA: "${{ github.workspace }}/node_modules/full-icu"
+          NODE_ICU_DATA: "${{ github.workspace }}/node_modules/icu4c-data"
       - name: organic btest402
         uses: ./.github/actions/btest402
         env:
-          NODE_ICU_DATA: "${{ github.workspace }}/node_modules/full-icu"
+          NODE_ICU_DATA: "${{ github.workspace }}/node_modules/icu4c-data"
+      - name: organic2
+        uses: ./.github/actions/index
+        env:
+          NODE_ICU_DATA: node_modules/icu4c-data
+      - name: organic2
+        uses: ./.github/actions/index
+        env:
+          NODE_ICU_DATA: ./node_modules/icu4c-data
